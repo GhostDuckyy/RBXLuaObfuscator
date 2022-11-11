@@ -7,6 +7,7 @@ local obfuscator = loadstring(game:HttpGet("https://raw.githubusercontent.com/Gh
 obfuscator(
  [===[
   --// Paste your source here
+  print("Hello World!")
  ]===],
  "CustomVar", --// CustomVariable
  "Secure by Ghost-Ducky#7698" --// WaterMark

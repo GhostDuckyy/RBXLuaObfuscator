@@ -8,8 +8,8 @@ obfuscator(
  [===[
   --// Paste your source here
  ]===],
- "CustomVar",
- "Secure by Ghost-Ducky#7698" -- WaterMark
+ "CustomVar", --// CustomVariable
+ "Secure by Ghost-Ducky#7698" --// WaterMark
 )
 ```
 **NOTE**: will be copied to clipboard after executed!

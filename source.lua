@@ -1,16 +1,27 @@
+--[[
+    Version: 1.0.2
+    Last Update: 13 / 11 / 2022 | Day / Month / Year
+]]--
+
 --// Default
 local setting = {
     CustomVariable = "Taurus_",
-    WaterMark = "   Secure by Ghost-Ducky#7698",
+    WaterMark = "    Secure by Ghost-Ducky#7698",
 }
 
 --// Source
 function obfuscate(source,VarName,WaterMark)
     local Variable = VarName or setting.CustomVariable
-    local WM = WaterMark or setting.WaterMark
-    source = source or [[print("Test")]]
+    local WM
+    source = source or [[print("Hello World!")]]
 
-    WM = "--[[".."\n".. tostring(WM) .."\n".."]]".."\n\n"
+    if typeof(WaterMark) == "string" and WaterMark ~= nil then
+        WM = "    "..tostring(WaterMark)
+    else
+        WM = "    ".."WaterMark".." | Secure by Ghost-Ducky#7698"
+    end
+
+    WM = "--[[".."\n".. tostring(WM) .."\n".."]]--".."\n\n"
 
     local random_ = function(length)
         local letters = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"}
@@ -37,14 +48,64 @@ function obfuscate(source,VarName,WaterMark)
         return tostring(code)
     end
 
+    local StringToBinary = function(String)
+        local BinaryString = {}
+
+        for i, Character in ipairs(String:split'') do
+            local Binary = ""
+            local Byte = Character:byte()
+            while Byte > 0 do
+                Binary = tostring(Byte % 2) .. Binary
+                Byte = math.modf(Byte / 2)
+            end
+            table.insert(BinaryString, string.format("%.8d", Binary))
+        end
+
+        return table.concat(BinaryString, " ")
+    end
+
+    local BinaryToString = function(BinaryString)
+        local String = ""
+        for i, Binary in ipairs(BinaryString:split' ') do
+            local Byte = tonumber(Binary, 2)
+            String ..= string.char(Byte)
+        end
+
+        return String
+    end
+
+    local add_binary = function(number, s)
+        local highest = 1
+        local topic = {
+            "Deobfuscate?",
+            "Hello World!",
+            "IronBrew Fork? Nope.",
+            "PSU Fork? Nope.",
+            "Touch some grass",
+        }
+
+        for i,v in pairs(topic) do
+            if i > highest then
+                highest = i
+            end
+        end
+
+        for i = 1, tonumber(number) do
+            local str = [[local ]]..Variable..tostring(random_(math.random(10,12)))..[[ = ]]..'"'..StringToBinary(tostring(topic[math.random(1, tonumber(highest))]))..'"'.."; "
+            s = s..str
+        end
+
+        return tostring(s)
+    end
+
     local Random_Variable = {
-        TableByte = random_(math.random(10,12)),
-        Table_concat = random_(math.random(10,12)),
-        Loadstring = random_(math.random(10,12)),
+        TableByte = random_(math.random(15,20)),
+        Table_concat = random_(math.random(15,20)),
+        Loadstring = random_(math.random(15,20)),
     }
 
-    local troll_func = [==[function(a)local b;spawn(function()local c={}local d=crypt.base64encode or crypt.base64.encode or crypt.base64_encode;local e=crypt.base64decode or crypt.base64.decode or crypt.base64_decode;local f={1,2,3,4,5,6,7,8,9,10}local g={"a","b","c"}local h={}local i={"5ibvh6g7zei2lzuxlspz","owymz3ajce95kgqdy7ni","yyxn6vk36i8gf3o72oq3","qyvdei3ijpybjv4xcohu","y9flgfmxl8mer6htbavh","5ivawlo9m0vzronkk6jy","99tjzhntr6gyj2xjyoht","a7n46012hzsiyfz3rdz2","003kctapqphg4gyfihju","096266t1sn3rtiqqfrjg","0kx583tfz5w83eyyje6e","ec31yhmk6a0l33hd6d7j","00qaaclsgx9f9nt8123g","dhsyc5xm6xuztywzj7hz","mz1yc82u98y450328hhf","csm8b5kf5nve8ydcxf8e","d6di8yvsa7o6ezr7pp4i","uf9gmq0uvjis9i602eo9","ajr0tx8derrb844o4akf","vkaf1rt8jq2s92m37rze"}for j,k in pairs(i)do if typeof(k)=="string"then table.insert(h,d(k))end;task.wait(.1)end;table.clear(g)for j,k in pairs(h)do if typeof(k)=="string"then table.insert(g,e(k))end;task.wait(.1)end;for l=1,100 do if l>50 and 49<l and f[1]<l then b=e(a)end end;local m=[[01010111 00000000 01101000 00000000 01111001 00000000 00100000 00000000 01111001 00000000 01101111 00000000 01110101 00000000 00100000 00000000 01101100 00000000 01101111 00000000 01101111 00000000 01101011 00000000 00100000 00000000 01110100 00000000 01101000 00000000 01101001 00000000 01110011 00000000 00100000 00000000 01100010 00000000 01101001 00000000 01101110 00000000 01110010 00000000 01100001 00000000 01111001 00000000 00100000 00000000 01100011 00000000 01101111 00000000 01100100 00000000 01100101 00000000 00111111 00000000]]local n=[[01000001 00000000 01110010 00000000 01100101 00000000 00100000 00000000 01111001 00000000 01101111 00000000 01110101 00000000 00100000 00000000 01110100 00000000 01110010 00000000 01111001 00000000 01101001 00000000 01101110 00000000 01100111 00000000 00100000 00000000 01100100 00000000 01100101 00000000 01101111 00000000 01100010 00000000 01100110 00000000 01110101 00000000 01110011 00000000 01100011 00000000 01100001 00000000 01110100 00000000 01100101 00000000 00111111 00000000]]local o=string.len(m)+string.len(n)if o>1000 then loadstring("\32\32\32\32\114\101\116\117\114\110\32\112\114\105\110\116\40\34\71\101\116\32\84\114\111\108\108\101\100\34\41\10")()end;local l=[[4D 00 61 00 64 00 65 00 20 00 62 00 79 00 20 00 47 00 68 00 6F 00 73 00 74 00 2D 00 44 00 75 00 63 00 6B 00 79 00 23 00 37 00 36 00 39 00 38 00]]local p=[[53 00 65 00 63 00 75 00 72 00 65 00 20 00 62 00 79 00 20 00 47 00 68 00 6F 00 73 00 74 00 2D 00 44 00 75 00 63 00 6B 00 79 00 23 00 37 00 36 00 39 00 38 00]]local q=[[BC A6 C4 E3 CC AB C3 C0 20 BC A6 C4 E3 CC AB C3 C0 20 BC A6 C4 E3 CC AB C3 C0 20 BC A6 C4 E3 CC AB C3 C0 20 BC A6 C4 E3 CC AB C3 C0 20 BC A6 C4 E3 CC AB C3 C0 20 BC A6 C4 E3 CC AB C3 C0 20 BC A6 C4 E3 CC AB C3 C0 20 BC A6 C4 E3 CC AB C3 C0 20 BC A6 C4 E3 CC AB C3 C0 20]]end)return b end]==]
-    local troll_var = [[local ]]..Variable..tostring(random_(math.random(10,12)))..[[ = ]]..troll_func
+    local troll_func = [[function() ]]..add_binary(math.random(10,15), "")..[[ end]]
+    local troll_var = [[local ]]..Variable..tostring(random_(math.random(15,20)))..[[ = ]]..troll_func
 
     local SourceByte = ""
     for i = 1,string.len(source) do SourceByte = SourceByte..'"\\'..string.byte(source, i)..'", ' end
@@ -55,20 +116,28 @@ function obfuscate(source,VarName,WaterMark)
         [2] = Variable..tostring(Random_Variable.TableByte),
     }
 
-    local fake_code = function(number)
+    local fake_code = function(number,r)
         local t = {}
         for i = 1, tonumber(number) do
-            local create_Var = Variable..tostring(random_(math.random(10,12)))
-            local random = "return "..tostring(random_(math.random(50,100)))
+            local create_Var = Variable..tostring(random_(math.random(15,20)))
+            local random
+
+            if r ~= nil then
+                random = "return "..tostring(random_(tonumber(r)))
+            else
+                random = "return "..tostring(random_(math.clamp(1000, string.len(source) / 2, string.len(source))))
+            end
+
             local byte = ""
             for x = 1,string.len(random) do byte = byte..'"\\'..string.byte(random, x)..'", ' end
-            local fake = [[local ]]..create_Var..[[ = {]]..byte..[[}; ]]..func[1]..[[(]]..create_Var..[[); ]]
+            local fake = [[local ]]..create_Var..[[ = {]]..byte..[[}; ]]..[[local ]]..create_Var.." = "..func[1]..[[(]]..create_Var..[[); ]]
             table.insert(t,fake)
         end
+
         return unpack(t)
     end
 
-    local obfuscated = WM..troll_var.."; "..Loadstring.."; "..fake_code(math.random(2,4))..TableByte.."; "..func[1].."("..func[2]..")".."; "..fake_code(math.random(4,6))
+    local obfuscated = WM..troll_var.."; "..Loadstring.."; "..fake_code(math.random(2,5), 250)..TableByte.."; "..[[local ]]..Variable..tostring(random_(math.random(15,20))).." = "..func[1].."("..func[2]..")".."; "..fake_code(math.random(1,2))
     setclipboard(obfuscated)
     return obfuscated
 end

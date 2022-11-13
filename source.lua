@@ -5,10 +5,10 @@
 
 --// Source
 function obfuscate(source,VarName,WaterMark)
-    local ticks = tick()
     local Variable = VarName or "Taurus_"
     local WM
     source = source or [[print("Hello World!")]]
+    local ticks = tick()
 
     if typeof(WaterMark) == "string" and WaterMark ~= nil then
         WM = "    "..tostring(WaterMark).." | Secure by Ghost-Ducky#7698"
@@ -100,11 +100,11 @@ function obfuscate(source,VarName,WaterMark)
         Loadstring = random_(math.random(15,20)),
     }
 
-    local troll_func = [[function() ]]..add_binary(math.random(50,80), "")..[[ end]]
+    local troll_func = [[function() ]]..add_binary(math.random(20,30), "")..[[ end]]
     local troll_var = [[local ]]..Variable..tostring(random_(math.random(15,20)))..[[ = ]]..troll_func
 
     local SourceByte = ""
-    for i = 1,string.len(source) do task.wait(.001) SourceByte = SourceByte..'"\\'..string.byte(source, i)..'", ' end
+    for i = 1,string.len(source) do SourceByte = SourceByte..'"\\'..string.byte(source, i)..'", ' task.wait(.001) end
     local TableByte = [[local ]]..Variable..tostring(Random_Variable.TableByte)..[[ = {]]..SourceByte..[[}]]
     local Loadstring = [[local ]]..Variable..tostring(Random_Variable.Loadstring)..[[ = loadstring(table.concat({"\114", "\101", "\116", "\117", "\114", "\110", "\32", "\102", "\117", "\110", "\99", "\116", "\105", "\111", "\110", "\40", "\98", "\121", "\116", "\101", "\41", "\10", "\32", "\32", "\32", "\32", "\105", "\102", "\32", "\116", "\121", "\112", "\101", "\111", "\102", "\40", "\98", "\121", "\116", "\101", "\41", "\32", "\61", "\61", "\32", "\34", "\116", "\97", "\98", "\108", "\101", "\34", "\32", "\116", "\104", "\101", "\110", "\10", "\32", "\32", "\32", "\32", "\32", "\32", "\32", "\32", "\108", "\111", "\97", "\100", "\115", "\116", "\114", "\105", "\110", "\103", "\40", "\116", "\97", "\98", "\108", "\101", "\46", "\99", "\111", "\110", "\99", "\97", "\116", "\40", "\98", "\121", "\116", "\101", "\41", "\41", "\40", "\41", "\10", "\32", "\32", "\32", "\32", "\101", "\108", "\115", "\101", "\10", "\32", "\32", "\32", "\32", "\32", "\32", "\32", "\32", "\98", "\121", "\116", "\101", "\32", "\61", "\32", "\123", "\98", "\121", "\116", "\101", "\125", "\10", "\32", "\32", "\32", "\32", "\32", "\32", "\32", "\32", "\108", "\111", "\97", "\100", "\115", "\116", "\114", "\105", "\110", "\103", "\40", "\116", "\97", "\98", "\108", "\101", "\46", "\99", "\111", "\110", "\99", "\97", "\116", "\40", "\98", "\121", "\116", "\101", "\41", "\41", "\40", "\41", "\10", "\32", "\32", "\32", "\32", "\101", "\110", "\100", "\10", "\101", "\110", "\100", "\10",}))()]]
     local func = {
@@ -125,7 +125,7 @@ function obfuscate(source,VarName,WaterMark)
             end
 
             local byte = ""
-            for x = 1,string.len(random) do task.wait(.001) byte = byte..'"\\'..string.byte(random, x)..'", ' end
+            for x = 1,string.len(random) do byte = byte..'"\\'..string.byte(random, x)..'", ' task.wait(.001) end
             local fake = [[local ]]..create_Var..[[ = {]]..byte..[[}; ]]..[[local ]]..create_Var.." = "..func[1]..[[(]]..create_Var..[[); ]]
             table.insert(t,fake)
         end
@@ -135,7 +135,7 @@ function obfuscate(source,VarName,WaterMark)
 
     local obfuscated = WM..troll_var.."; "..Loadstring.."; "..fake_code(math.random(2,5), 250)..TableByte.."; "..[[local ]]..Variable..tostring(random_(math.random(15,20))).." = "..func[1].."("..func[2]..")".."; "..fake_code(math.random(1,2))
     setclipboard(obfuscated)
-    warn("Done obfuscate source in "..tostring(ticks - tick()))
+    warn("Done obfuscate source in "..tostring(tick() - ticks))
     return obfuscated
 end
 

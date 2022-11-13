@@ -1,5 +1,5 @@
 --[[
-    Version: 1.0.2
+    Version: 1.0.3
     Last Update: 13 / 11 / 2022 | Day / Month / Year
 ]]--
 
@@ -104,7 +104,7 @@ function obfuscate(source,VarName,WaterMark)
         Loadstring = random_(math.random(15,20)),
     }
 
-    local troll_func = [[function() ]]..add_binary(math.random(10,15), "")..[[ end]]
+    local troll_func = [[function() ]]..add_binary(string.len(source) / 2, "")..[[ end]]
     local troll_var = [[local ]]..Variable..tostring(random_(math.random(15,20)))..[[ = ]]..troll_func
 
     local SourceByte = ""

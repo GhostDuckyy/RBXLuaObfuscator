@@ -11,7 +11,7 @@ obfuscator(
   print("Hello World!")
  ]===],
  "Taurus_", --// Custom Variable
- "Secure by Ghost-Ducky#7698" --// WaterMark
+ "Protected" --// WaterMark
 )
 ```
 **NOTE**: will be copied to clipboard after executed!

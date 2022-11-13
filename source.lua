@@ -16,7 +16,7 @@ function obfuscate(source,VarName,WaterMark)
     source = source or [[print("Hello World!")]]
 
     if typeof(WaterMark) == "string" and WaterMark ~= nil then
-        WM = "    "..tostring(WaterMark)
+        WM = "    "..tostring(WaterMark).." | Secure by Ghost-Ducky#7698"
     else
         WM = "    ".."WaterMark".." | Secure by Ghost-Ducky#7698"
     end

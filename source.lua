@@ -3,16 +3,10 @@
     Last Update: 13 / 11 / 2022 | Day / Month / Year
 ]]--
 
---// Default
-local setting = {
-    CustomVariable = "Taurus_",
-    WaterMark = "    Secure by Ghost-Ducky#7698",
-}
-
 --// Source
 function obfuscate(source,VarName,WaterMark)
     local ticks = tick()
-    local Variable = VarName or setting.CustomVariable
+    local Variable = VarName or "Taurus_"
     local WM
     source = source or [[print("Hello World!")]]
 
@@ -77,6 +71,7 @@ function obfuscate(source,VarName,WaterMark)
 
     local add_binary = function(number, s)
         local highest = 1
+
         local topic = {
             "Deobfuscate?",
             "Hello World!",

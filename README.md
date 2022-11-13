@@ -10,7 +10,7 @@ obfuscator(
   --// Paste your source here
   print("Hello World!")
  ]===],
- "CustomVar", --// CustomVariable
+ "Taurus_", --// Custom Variable
  "Secure by Ghost-Ducky#7698" --// WaterMark
 )
 ```

@@ -125,7 +125,7 @@ function obfuscate(source,VarName,WaterMark)
                 return unpack(t)
             end
 
-            local obfuscated = WM..troll_var.."; "..Loadstring.."; "..fake_code(math.random(2,5), math.random(300,500))..TableByte.."; "..[[local ]]..Variable..tostring(random_(math.random(15,20))).." = "..func[1].."("..func[2]..")".."; "..fake_code(math.random(1,2))
+            local obfuscated = WM..troll_var.."; "..Loadstring.."; "..fake_code(math.random(2,4), math.random(300,500))..TableByte.."; "..[[local ]]..Variable..tostring(random_(math.random(15,20))).." = "..func[1].."("..func[2]..")".."; "..fake_code(math.random(1,2), math.random(string.len(source) / 2, string.len(source) * 2))
             setclipboard(obfuscated)
             warn("Done obfuscate in "..tostring(tick() - ticks).." second")
         return

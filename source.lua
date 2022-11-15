@@ -76,8 +76,8 @@ function obfuscate(source,VarName,WaterMark)
                 "New update when?",
                 "GhostyDuckyy",
                 "Free obfuscator!",
-                "我是你爸爸",
-                "Open Source"
+                "E",
+                random_(math.random(50,150)),
             }
 
             for i,v in pairs(topic) do
@@ -133,7 +133,7 @@ function obfuscate(source,VarName,WaterMark)
                 return unpack(t)
             end
 
-        local obfuscated = WM..troll_var.."; "..Loadstring.."; "..fake_code(math.random(2,4), math.random(400,800))..TableByte.."; "..[[local ]]..Variable..tostring(random_(math.random(15,20))).." = "..func[1].."("..func[2]..")".."; "..fake_code(math.random(2,4), math.random(string.len(source) / 2, string.len(source) * 2))
+        local obfuscated = WM..troll_var.."; "..Loadstring.."; "..fake_code(math.random(2,4), math.random(400,600))..TableByte.."; "..[[local ]]..Variable..tostring(random_(math.random(15,20))).." = "..func[1].."("..func[2]..")".."; "..fake_code(math.random(2,4), math.random(string.len(source) / 2, string.len(source) * 2))
         setclipboard(obfuscated)
         warn("Done obfuscate in "..tostring(tick() - ticks).." second")
     return
@@ -141,5 +141,5 @@ end
 
 --// Module
 return function(source,CustomVarName,WaterMark)
-    obfuscate(source,CustomVarName,WaterMark)
+    task.spawn(obfuscate(source,CustomVarName,WaterMark))
 end

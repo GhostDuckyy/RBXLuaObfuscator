@@ -140,6 +140,8 @@ function obfuscate(source,VarName,WaterMark)
 end
 
 --// Module
-return task.spawn(function(source,CustomVarName,WaterMark)
-    obfuscate(source,CustomVarName,WaterMark)
-end)
+return function(source,CustomVarName,WaterMark)
+    task.spawn(function()
+        obfuscate(source,CustomVarName,WaterMark)
+    end)
+end
